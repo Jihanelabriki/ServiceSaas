@@ -1,9 +1,10 @@
 package org.example.gestiondesabonnementssaas.entity;
 
-
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import java.util.List;
 
 @Entity
 public class Customer {
@@ -21,16 +22,9 @@ public class Customer {
 
     private String phone;
 
-    // Default constructor
-    public Customer() {
-    }
-
-    // Parameterized constructor
-    public Customer(String name, String email, String phone) {
-        this.name = name;
-        this.email = email;
-        this.phone = phone;
-    }
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference // Gère la sérialisation pour éviter la boucle infinie
+    private List<Subscription> subscriptions;
 
     // Getters and Setters
     public Long getId() {
@@ -63,5 +57,13 @@ public class Customer {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public List<Subscription> getSubscriptions() {
+        return subscriptions;
+    }
+
+    public void setSubscriptions(List<Subscription> subscriptions) {
+        this.subscriptions = subscriptions;
     }
 }

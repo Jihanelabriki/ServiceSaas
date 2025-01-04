@@ -1,8 +1,8 @@
+// CustomerController
 package org.example.gestiondesabonnementssaas.controller;
 
-
-
 import org.example.gestiondesabonnementssaas.entity.Customer;
+import org.example.gestiondesabonnementssaas.entity.Subscription;
 import org.example.gestiondesabonnementssaas.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -49,5 +49,17 @@ public class CustomerController {
         customerService.deleteCustomer(id);
         return ResponseEntity.noContent().build();
     }
-}
 
+    // Add a subscription to a customer
+    @PostMapping("/{customerId}/subscriptions")
+    public ResponseEntity<Subscription> addSubscription(
+            @PathVariable Long customerId, @RequestBody Subscription subscription) {
+        return ResponseEntity.ok(customerService.addSubscription(customerId, subscription));
+    }
+
+    // Get subscriptions of a customer
+    @GetMapping("/{customerId}/subscriptions")
+    public ResponseEntity<List<Subscription>> getSubscriptions(@PathVariable Long customerId) {
+        return ResponseEntity.ok(customerService.getSubscriptions(customerId));
+    }
+}

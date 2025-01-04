@@ -1,3 +1,4 @@
+### Créer le premier client avec son abonnement
 POST http://localhost:8080/customers
 Content-Type: application/json
 
@@ -6,3 +7,81 @@ Content-Type: application/json
   "email": "labrikijihane@example.com",
   "phone": "0610066875"
 }
+
+### Ajouter un abonnement pour Alice Dupont
+POST http://localhost:8080/customers/1/subscriptions
+Content-Type: application/json
+
+{
+  "serviceName": "Premium Cloud Storage",
+  "price": 19.99,
+  "durationInMonths": 12
+}
+
+### Créer le deuxième client avec son abonnement
+POST http://localhost:8080/customers
+Content-Type: application/json
+
+{
+  "name": "Btihal Boussbik",
+  "email": "boussbikbtihal@example.com",
+  "phone": "0687654321"
+}
+
+### Ajouter un abonnement pour Bob Martin
+POST http://localhost:8080/customers/2/subscriptions
+Content-Type: application/json
+
+{
+  "serviceName": "Basic Analytics Package",
+  "price": 9.99,
+  "durationInMonths": 6
+}
+
+### Créer le troisième client avec son abonnement
+POST http://localhost:8080/customers
+Content-Type: application/json
+
+{
+  "name": "Fadoua Zaitar",
+  "email": "fadwa.zaitar@example.com",
+  "phone": "0622334455"
+}
+
+### Ajouter un abonnement pour Caroline Moreau
+POST http://localhost:8080/customers/3/subscriptions
+Content-Type: application/json
+
+{
+  "serviceName": "Advanced Marketing Toolkit",
+  "price": 29.99,
+  "durationInMonths": 24
+}
+
+### Créer le quatrième client avec son abonnement
+POST http://localhost:8080/customers
+Content-Type: application/json
+
+{
+  "name": "Nada ElMekdem",
+  "email": "elmekademnada@example.com",
+  "phone": "0666778899"
+}
+
+### Ajouter un abonnement pour David Leroy
+POST http://localhost:8080/customers/4/subscriptions
+Content-Type: application/json
+
+{
+  "serviceName": "Enterprise Security Suite",
+  "price": 49.99,
+  "durationInMonths": 36
+}
+
+### Récupérer tous les clients avec leurs abonnements
+GET http://localhost:8080/customers
+Accept: application/json
+
+### Récupérer les abonnements d'un client spécifique (ex: Alice Dupont)
+GET http://localhost:8080/customers/1/subscriptions
+Accept: application/json
