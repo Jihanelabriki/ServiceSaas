@@ -1,0 +1,8 @@
+POST http://localhost:8080/customers
+Content-Type: application/json
+
+{
+  "name": "Jihane Labriki",
+  "email": "labrikijihane@example.com",
+  "phone": "0610066875"
+}
